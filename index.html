@@ -742,9 +742,59 @@
             }
             
             .recipe-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: /* Убирает стандартные отступы iOS при установке как PWA */
+    @media all and (display-mode: standalone) {
+        body {
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
+        }
+        
+        /* Для iPhone с "чёлкой" */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(20px, env(safe-area-inset-left));
+                padding-right: max(20px, env(safe-area-inset-right));
+                padding-top: max(20px, env(safe-area-inset-top));
+                padding-bottom: max(20px, env(safe-area-inset-bottom));
             }
         }
+    }
+
+    /* Для лучшего отображения на iOS */
+    @supports (-webkit-touch-callout: none) {
+        body {
+            /* iOS не позволяет vh быть точным */
+            min-height: -webkit-fill-available;
+        }
+        
+        /* Улучшаем нажатия на iOS */
+        button, .quick-btn, .tool-card {
+            -webkit-tap-highlight-color: transparent;
+            cursor: pointer;
+        }
+        
+        /* Предотвращаем масштабирование полей ввода */
+        input, textarea, select {
+            font-size: 16px !important;
+        }
+    }
+
+    /* Стили для установленного PWA */
+    :root {
+        --safe-area-inset-top: env(safe-area-inset-top);
+        --safe-area-inset-bottom: env(safe-area-inset-bottom);
+        --safe-area-inset-left: env(safe-area-inset-left);
+        --safe-area-inset-right: env(safe-area-inset-right);
+    }
+
+    /* Для полноэкранного режима PWA */
+    @media (display-mode: standalone) {
+        header {
+            margin-top: var(--safe-area-inset-top);
+        }
+    }
     </style>
 </head>
 <body>
