@@ -1,0 +1,15 @@
+# Игнорируемые файлы
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Временные файлы
+*.tmp
+*.temp
+
+# Системные файлы
+*.swp
+*~
