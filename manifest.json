@@ -1,21 +1,18 @@
 {
-  "name": "Coloristica",
-  "short_name": "Coloristica",
+  "name": "Colorictica",
+  "short_name": "Colorictica",
   "description": "Профессиональный расчет окрашивания волос",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#4a148c",
   "theme_color": "#4a148c",
   "orientation": "portrait",
+  "scope": "/",
+  
   "icons": [
     {
       "src": "icon.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icon.png",
-      "sizes": "512x512",
+      "sizes": "144x144 192x192 512x512",
       "type": "image/png"
     }
   ]
